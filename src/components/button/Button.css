@@ -1,0 +1,12 @@
+.button {
+    background: #2f71e5;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 20px;
+    min-height: 40px;
+    margin-right: 10px;
+}
+
+.button:last-of-type {
+    margin-right: 0;
+}
