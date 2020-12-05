@@ -1,5 +1,7 @@
 @import url(../vendor/normalize.css);
-@import url(./limited-section.css);
+@import url(../blocks/limited-section/limited-section.css);
+@import url(../blocks/data-instruments/data-instruments.css);
+@import url(../blocks/data-instruments/data-instruments.css);
 
 .root {
   

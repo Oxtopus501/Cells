@@ -1,0 +1,7 @@
+.table-entry {
+
+}
+
+.table-entry:nth-last-of-type(2n) {
+    background-color: #e6f4ff;
+}

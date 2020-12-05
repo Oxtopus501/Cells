@@ -1,0 +1,7 @@
+@import url(./__header-cell/table__header-cell.css);
+@import url(./__body/table__body.css);
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}

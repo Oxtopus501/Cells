@@ -1,0 +1,7 @@
+.data-instruments__input {
+    min-height: 28px;
+    font-size: 18px;
+    min-width: calc(100% - 90px);
+    margin-right: 5px;
+    border-radius: 8px;
+}

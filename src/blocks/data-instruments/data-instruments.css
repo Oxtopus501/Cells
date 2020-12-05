@@ -1,0 +1,8 @@
+@import url(./__form/data-instruments__form.css);
+@import url(./__input/data-instruments__input.css);
+
+.data-instruments {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 16px;
+}
