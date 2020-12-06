@@ -5,6 +5,7 @@ import './App.css';
 import Header from './header/Header';
 import Main from './main/Main';
 import TableEntry from './table-entry/TableEntry';
+import DetailedInfo from './detailedInfo/DetailedInfo';
 import _, { orderBy } from 'lodash';
 
 
@@ -13,7 +14,8 @@ function App() {
   const [tableData, setTableData] = React.useState([]); //Данные для таблицы
   const [isLoading, setIsLoading] = React.useState(false); //Стэйт "идёт ли загрузка?"
   const [sortDirection, setSortDirection] = React.useState('asc'); //Стэйт с направлением сортировки
-  const [orderedBy, setOrderedBy] = React.useState(null);
+  const [orderedBy, setOrderedBy] = React.useState(null); //Категория сортировки
+  const [detailedInfo, setDetailedInfo] = React.useState(null);
 
   //Загрузка данных с сервера
   function getInfo() {
@@ -44,12 +46,17 @@ function App() {
     setTableData(sortedData);
   }
 
+  function showInfo(item) {
+    //console.log(event.target.parentElement);
+    setDetailedInfo(item);
+  }
+
   //Перерисока таблицы при изменении tableData
   React.useEffect(() => {
     ReactDOM.render((
       <>
         {tableData.map(item => (
-          <TableEntry entry={item} />
+          <TableEntry entry={item} showInfo={showInfo}/>
         ))}
       </>
     ), document.querySelector('.table__body'))
@@ -60,8 +67,14 @@ function App() {
       <Header 
         onLoadInfo={getInfo} 
       />
-      <Main tableData={tableData} sortData={sortData} orderedBy={orderedBy} sortDirection={sortDirection}/>
+      <Main 
+        tableData={tableData} 
+        sortData={sortData} 
+        orderedBy={orderedBy} 
+        sortDirection={sortDirection} 
+      />
       {isLoading ? <div className="loader" /> : null}
+      {detailedInfo ? <DetailedInfo person={detailedInfo} /> : null }
     </div>
   );
 }

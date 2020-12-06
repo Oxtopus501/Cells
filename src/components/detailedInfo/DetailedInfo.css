@@ -1,0 +1,10 @@
+.detailed-info {
+    border: 3px solid #2f71e5;
+    border-radius: 10px;
+    max-width: 720px;
+}
+
+.detailed-info__description {
+    width: 90%;
+    height: 80px;
+}
