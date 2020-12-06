@@ -15,7 +15,7 @@ function Main(props) {
                 </form>
                 <Button title={'+ Добавить'} />
             </section>
-            <Table tableData={props.tableData}/>
+            <Table tableData={props.tableData} sortData={props.sortData} orderedBy={props.orderedBy} sortDirection={props.sortDirection}/>
         </>
     )
 }
