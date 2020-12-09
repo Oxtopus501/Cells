@@ -1,5 +1,6 @@
 @import url(./__form/data-instruments__form.css);
 @import url(./__input/data-instruments__input.css);
+@import url(./__button/data-instruments__button.css);
 
 .data-instruments {
     display: flex;
