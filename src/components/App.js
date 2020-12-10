@@ -89,9 +89,12 @@ function App() {
     dataCopy = tableData.slice(); //Делаю копию tableData
     setCurrentPage(0); //Задаю первую страницу пагинации текущей
     const filteredData = dataCopy.filter( item => {
-      return item['firstName'].toLowerCase().includes(filterValue.toLowerCase())
+      //console.log(item['id'].includes(filterValue));
+      return item['id'].toString().includes(filterValue)
+        || item['firstName'].toLowerCase().includes(filterValue.toLowerCase())
         || item['lastName'].toLowerCase().includes(filterValue.toLowerCase())
         || item['email'].toLowerCase().includes(filterValue.toLowerCase())
+        || item['phone'].toString().includes(filterValue)
     }) //Фильтрую записи
     let dataToDisplay = [];
     //Если строчек больше, чем должно быть на странице - разбиваем на страницы, иначе - передаём все строчки на первую страницу
