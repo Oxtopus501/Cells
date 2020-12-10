@@ -10,6 +10,7 @@ import Table from './table/Table';
 import TableEntry from './table-entry/TableEntry';
 import DetailedInfo from './detailedInfo/DetailedInfo';
 import SearchForm from './search-form/SearchForm';
+import PopupFormAdd from './popup-form-add/PopupFormAdd';
 import Button from './button/Button';
 import _, { orderBy } from 'lodash';
 
@@ -26,6 +27,7 @@ function App() {
   const [currentPage, setCurrentPage] = React.useState(0);
   const [dataToRender, setDataToRender] = React.useState([]);
   const [filterValue, setFilterValue] = React.useState('');
+  const [isAddPopupOpen, setIsAddPopupOpen] = React.useState(false);
   
   let dataCopy = [];
 
@@ -70,6 +72,19 @@ function App() {
     setFilterValue(event.target.value);
   }
 
+  function onAddButtonClick() {
+    setIsAddPopupOpen(true);
+  }
+
+  function closePopup() {
+    setIsAddPopupOpen(false);
+  }
+
+  function addData(newData) {
+    closePopup();
+    setTableData([...tableData, newData]);
+  }
+
   function filterData() {
     dataCopy = tableData.slice(); //Делаю копию tableData
     setCurrentPage(0); //Задаю первую страницу пагинации текущей
@@ -86,7 +101,7 @@ function App() {
     } else {
       dataToDisplay[0] = filteredData;
     }
-    setPageCount(dataToDisplay.length / ENTRIES_PER_PAGE);
+    setPageCount(dataToDisplay.length);
     setDataToRender(dataToDisplay);
   }
 
@@ -96,7 +111,7 @@ function App() {
     setPageCount(tableData.length / ENTRIES_PER_PAGE);
     const chunkedData = _.chunk(dataCopy, ENTRIES_PER_PAGE);
     setDataToRender(chunkedData);
-    //console.log(tableData);
+    console.log(tableData);
     //console.log(chunkedData);
   }, [tableData]);
 
@@ -127,7 +142,7 @@ function App() {
       />*/}
       <section className="data-instruments limited-section">
         <SearchForm changeFilterValue={changeFilterValue} filterData={filterData}/>
-        <button className="data-instruments__button">+ Добавить</button>
+        <button className="data-instruments__button" onClick={onAddButtonClick}>+ Добавить</button>
       </section>
         <Table 
           tableData={tableData} 
@@ -151,8 +166,9 @@ function App() {
           previousClassName={'pagination__item'}
           nextClassName={'pagination__item'}
         /> : null}
-      {isLoading ? <div className="loader" /> : null}
-      {detailedInfo ? <DetailedInfo person={detailedInfo} /> : null }
+        {isLoading ? <div className="loader" /> : null}
+        {detailedInfo ? <DetailedInfo person={detailedInfo} /> : null }
+        <PopupFormAdd isOpen={isAddPopupOpen} onClose={closePopup} onAddData={addData}/>
     </div>
   );
 }

@@ -1,0 +1,6 @@
+.popup__form-container {
+    display: grid;
+    grid-template-columns: 8% repeat(4, 1fr) ;
+    row-gap: 5px;
+    margin-bottom: 20px;
+}
