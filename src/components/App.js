@@ -111,7 +111,6 @@ function App() {
     setPageCount(tableData.length / ENTRIES_PER_PAGE);
     const chunkedData = _.chunk(dataCopy, ENTRIES_PER_PAGE);
     setDataToRender(chunkedData);
-    console.log(tableData);
     //console.log(chunkedData);
   }, [tableData]);
 
